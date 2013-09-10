@@ -91,18 +91,16 @@ class OpenSearchDocument {
    *
    */
   function execute_request() {
-    global $wp;
-
-    if( array_key_exists('opensearch', $wp->query_vars) ) {
+    if( $opensearch = get_query_var('opensearch') ) {
       self::print_xml();
-    } else if ( array_key_exists('opensearch-suggestions', $wp->query_vars) ) {
+    } else if ( $opensearch_suggestions = get_query_var('opensearch-suggestions') ) {
       $tags = array();
       $output = array();
-      foreach (get_tags('search='.$wp->query_vars['opensearch-suggestions']) as $tag) {
+      foreach (get_tags('search='.$opensearch_suggestions) as $tag) {
         $tags[] = $tag->name;
       }
       
-      $output[] = $wp->query_vars['opensearch-suggestions'];
+      $output[] = $opensearch_suggestions;
       $output[] = $tags;
       
       header("Access-Control-Allow-Origin: *");
@@ -117,8 +115,7 @@ class OpenSearchDocument {
    *
    */
   function print_xml() {
-    //header('Content-Type: application/opensearchdescription+xml');
-    header('Content-Type: text/xml');
+    header('Content-Type: application/opensearchdescription+xml');
     header('Encoding: '.get_option('blog_charset'));
     echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?>';
   ?>
