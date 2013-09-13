@@ -51,7 +51,7 @@ if (isset($wp_version)) {
 class OpenSearchDocument {
 
   /**
-   * add open-search query var
+   * Add some query-vars
    *
    * @param array $vars query vars
    * @return array updated query vars
@@ -71,7 +71,7 @@ class OpenSearchDocument {
   }
 
   /**
-   * add some open-search rewrite rules
+   * rewrite rules
    *
    * @param array $wp_rewrite array of rewrite rules
    */
@@ -111,8 +111,7 @@ class OpenSearchDocument {
   }
   
   /**
-   * function to render the open-search document
-   *
+   * Render the OpenSearch document
    */
   function print_xml() {
     header('Content-Type: application/opensearchdescription+xml');
@@ -141,47 +140,42 @@ class OpenSearchDocument {
   }
 
   /**
-   * contribute the open-search autodiscovery-header
-   *
+   * Autodiscovery header
    */
   function display_in_header() {
     echo '<link rel="search" type="application/opensearchdescription+xml" title="'. get_bloginfo('name') .'" href="'.site_url("/?opensearch=true").'" />'."\n";
   }
 
   /**
-   * contribute the open-search atom-autodiscovery header
-   *
+   * Atom autodiscovery header
    */
   function display_in_atom_header() {
     echo '<link rel="search" href="'.site_url("/?opensearch=true").'" type="application/opensearchdescription+xml" title="Content Search" />';
   }
 
   /**
-   * contribute the open-search rss-autodiscovery header
-   *
+   * RSS autodiscovery header
    */
   function display_in_rss_header() {
     echo '<atom:link rel="search" href="'.site_url("/?opensearch=true").'" type="application/opensearchdescription+xml" title="Content Search" />';
   }
 
   /**
-   * Contribute the open-search atom-namespace
-   *
+   * Atom namespace
    */
   function atom_namespace() {
     echo ' xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" '."\n";
   }
 
   /**
-   * Contribute the open-search rss-namespace
-   *
+   * RSS namespace
    */
   function rss_namespace() {
     echo ' xmlns:atom="http://www.w3.org/2005/Atom" '."\n";
   }
 
   /**
-   * contribute the OpenSearch to XRDS-Simple.
+   * XRDS-Simple informations
    *
    * @param array $xrds current XRDS-Simple array
    * @return array updated XRDS-Simple array
@@ -198,7 +192,7 @@ class OpenSearchDocument {
   }
   
   /**
-   * add the host meta information
+   * host-meta informations
    */
   function add_xrd($array) {     
     $array["links"][] = array("rel" => "http://a9.com/-/spec/opensearch/1.1/", "href" => site_url("/?opensearch=true"), "type" => "application/opensearchdescription+xml");
