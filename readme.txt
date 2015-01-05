@@ -1,10 +1,10 @@
-=== Open Search Document ===
+=== Open Search ===
 Contributors: pfefferle, johnnoone
 Donate link:
-Tags: open search document, osd, search, browser, interface, open search, xrds, xrds simple, rss, atom
+Tags: open search, opensearch, open search document, osd, search, browser, interface
 Requires at least: 2.1
 Tested up to: 3.6
-Stable tag: 1.3.1
+Stable tag: 1.3
 
 Create an Open Search Document for your blog.
 
