@@ -23,6 +23,9 @@ The plugin supports:
 
 == Changelog ==
 
+= 2.0.0 =
+* complete refactoring
+
 = 1.3.1 =
 * Some smaller fixes
 

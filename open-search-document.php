@@ -1,10 +1,10 @@
 <?php
 /*
- Plugin Name: Open Search
+ Plugin Name: Open Search Document
  Plugin URI: http://wordpress.org/plugins/open-search-document/
  Description: Create an Open Search Document for your blog.
  Version: 2.0.0-beta
- Author: XBA, Matthias Pfefferle
+ Author: johnnoone, pfefferle
  Author URI: http://wordpress.org/plugins/open-search-document/
 */
 
@@ -31,7 +31,7 @@ add_filter("init", array("OpenSearchDocumentPlugin", "init"));
  * open search document for wordpress
  *
  * @author Matthias Pfefferle
- * @author XBA
+ * @author johnnoone
  */
 class OpenSearchDocumentPlugin {
 
@@ -73,8 +73,9 @@ class OpenSearchDocumentPlugin {
   }
 
   /**
+   * Parse request and "do" some actions
    *
-   *
+   * @param $wp
    */
   public static function parse_request($wp) {
     // check if it is an opensearch request or not
