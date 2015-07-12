@@ -7,5 +7,5 @@
 	<description>A custom set of code standard rules to check for WordPress themes.</description>
 
 	<!-- Include the WordPress ruleset, with exclusions. -->
-	<rule ref="WordPress" />
+	<rule ref="WordPress-Core" />
 </ruleset>

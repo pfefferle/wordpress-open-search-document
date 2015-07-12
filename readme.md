@@ -1,10 +1,11 @@
+[![WordPress](https://img.shields.io/wordpress/v/open-search-document.svg?style=flat-square)](https://wordpress.org/plugins/open-search-document/) [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/open-search-document.svg?style=flat-square)](https://wordpress.org/plugins/open-search-document/changelog/) [![WordPress](https://img.shields.io/wordpress/plugin/dt/open-search-document.svg?style=flat-square)](https://wordpress.org/plugins/open-search-document/) 
+
 # Open Search #
 **Contributors:** pfefferle, johnnoone  
-Donate link:
-**Tags:** open search, opensearch, open search document, osd, search, browser, interface  
+**Tags:** open search, opensearch, open search document, osd, search  
 **Requires at least:** 2.1  
-**Tested up to:** 4.3
-**Stable tag:** 2.0.0
+**Tested up to:** 4.3  
+**Stable tag:** 2.0.0  
 
 Create an Open Search Document for your blog.
 
@@ -25,6 +26,8 @@ The plugin supports:
 
 ### 2.0.0 ###
 * complete refactoring
+* WordPress coding style
+* Site icon support
 
 ### 1.3.1 ###
 * Some smaller fixes

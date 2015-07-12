@@ -1,17 +1,19 @@
 <?php
 /*
- Plugin Name: Open Search Document
- Plugin URI: http://wordpress.org/plugins/open-search-document/
- Description: Create an Open Search Document for your blog.
- Version: 2.0.0
- Author: johnnoone, pfefferle
- Author URI: http://wordpress.org/plugins/open-search-document/
+Plugin Name: Open Search Document
+Plugin URI: http://wordpress.org/plugins/open-search-document/
+Description: Create an Open Search Document for your blog.
+Version: 2.0.0
+Author: johnnoone, pfefferle
+Author URI: http://wordpress.org/plugins/open-search-document/
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 add_filter( 'init', array( 'OpenSearchDocumentPlugin', 'init' ) );
 
 /**
- * open search document for WordPress
+ * Open search document for WordPress
  *
  * @author Matthias Pfefferle
  * @author johnnoon
@@ -30,12 +32,12 @@ class OpenSearchDocumentPlugin {
 
 		add_action( 'opensearch_1.1', array( 'OpenSearchDocumentPlugin', 'render_discovery' ) );
 		add_action( 'opensearch_suggestions', array( 'OpenSearchDocumentPlugin', 'render_suggestions' ), 10, 1 );
-		// backwards compatibility
+		// Backwards compatibility.
 		add_action( 'opensearch_true', array( 'OpenSearchDocumentPlugin', 'render_discovery' ) );
 
 		add_action( 'osd_xml', array( 'OpenSearchDocumentPlugin', 'osd_xml' ) );
 
-		// add autodiscovery
+		// Add autodiscovery.
 		add_action( 'wp_head', array( 'OpenSearchDocumentPlugin', 'add_head' ) );
 		add_action( 'atom_head', array( 'OpenSearchDocumentPlugin', 'add_head' ) );
 		add_action( 'rss2_head', array( 'OpenSearchDocumentPlugin', 'add_rss_head' ) );
@@ -47,7 +49,7 @@ class OpenSearchDocumentPlugin {
 	/**
 	 * Add some query-vars
 	 *
-	 * @param array $vars query vars
+	 * @param array $vars query vars.
 	 * @return array updated query vars
 	 */
 	public static function query_vars( $vars ) {
@@ -106,7 +108,7 @@ class OpenSearchDocumentPlugin {
 	/**
 	 * Render the the suggestion JSON, based on the WordPress tags
 	 *
-	 * @param $query_vars array the query vars as array
+	 * @param $query_vars array the query vars as array.
 	 */
 	public static function render_suggestions( $query_vars ) {
 		$tags = array();
@@ -127,7 +129,7 @@ class OpenSearchDocumentPlugin {
 		$output[] = $query_vars['s'];
 		$output[] = $tags;
 
-		echo json_encode( $output );
+		echo wp_json_encode( $output );
 		exit;
 	}
 

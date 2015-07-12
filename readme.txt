@@ -1,10 +1,9 @@
 === Open Search ===
 Contributors: pfefferle, johnnoone
-Donate link:
-Tags: open search, opensearch, open search document, osd, search, browser
+Tags: open search, opensearch, open search document, osd, search
 Requires at least: 2.1
-Tested up to: 3.6
-Stable tag: 1.3
+Tested up to: 4.3
+Stable tag: 2.0.0
 
 Create an Open Search Document for your blog.
 
@@ -26,6 +25,7 @@ The plugin supports:
 = 2.0.0 =
 * complete refactoring
 * WordPress coding style
+* Site icon support
 
 = 1.3.1 =
 * Some smaller fixes
