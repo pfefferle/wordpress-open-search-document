@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/plugins/open-search-document/
 Description: Create an Open Search Document for your blog.
 Version: 2.0.0
 Author: johnnoone, pfefferle
-Author URI: http://wordpress.org/plugins/open-search-document/
+Author URI: https://github.com/pfefferle/wordpress-open-search-document/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -191,25 +191,27 @@ class OpenSearchDocumentPlugin {
 	}
 
 	/**
-	 *
+	 * Adds OSD Images
 	 */
 	public static function osd_xml() {
 		if ( function_exists( 'get_site_icon_url' ) ) {
 ?>
 	<Image height="16" width="16"><?php echo get_site_icon_url( null, 16 ); ?></Image>
+	<Image height="32" width="32"><?php echo get_site_icon_url( null, 32 ); ?></Image>
 	<Image height="64" width="64"><?php echo get_site_icon_url( null, 64 ); ?></Image>
 <?php
 		}
 	}
 
 	/**
-	 * Add 16x16 icon
+	 * Add icons
 	 *
 	 * @param  array $sizes sizes available for the site icon
 	 * @return array        updated list of icons
 	 */
 	public static function site_icon_image_sizes( $sizes ) {
 		$sizes[] = '16';
+		$sizes[] = '32';
 		$sizes[] = '64';
 
 		return array_unique( $sizes );
