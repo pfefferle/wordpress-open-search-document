@@ -3,7 +3,7 @@
 Plugin Name: Open Search Document
 Plugin URI: http://wordpress.org/plugins/open-search-document/
 Description: Create an Open Search Document for your blog.
-Version: 2.1.0
+Version: 2.1.1
 Author: johnnoone, pfefferle
 Author URI: https://github.com/pfefferle/wordpress-open-search-document/
 License: GPLv2 or later
@@ -28,7 +28,7 @@ class OpenSearchDocumentPlugin {
 		add_action( 'parse_request', array( 'OpenSearchDocumentPlugin', 'parse_request' ) );
 		add_action( 'atom_ns', array( 'OpenSearchDocumentPlugin', 'add_atom_namespace' ) );
 
-		add_action( 'site_icon_image_sizes', array( 'OpenSearchDocumentPlugin', 'site_icon_image_sizes' ) );
+		add_filter( 'site_icon_image_sizes', array( 'OpenSearchDocumentPlugin', 'site_icon_image_sizes' ) );
 
 		add_action( 'opensearch_1.1', array( 'OpenSearchDocumentPlugin', 'render_discovery' ) );
 		add_action( 'opensearch_suggestions', array( 'OpenSearchDocumentPlugin', 'render_suggestions' ), 10, 1 );
@@ -171,11 +171,11 @@ class OpenSearchDocumentPlugin {
 	 * Adds OSD Images
 	 */
 	public static function osd_xml() {
-		if ( function_exists( 'get_site_icon_url' ) ) {
+		if ( function_exists( 'get_site_icon_url' ) && has_site_icon() ) {
 ?>
-	<Image height="16" width="16"><?php echo get_site_icon_url( null, 16 ); ?></Image>
-	<Image height="32" width="32"><?php echo get_site_icon_url( null, 32 ); ?></Image>
-	<Image height="64" width="64"><?php echo get_site_icon_url( null, 64 ); ?></Image>
+	<Image height="16" width="16"><?php echo get_site_icon_url( 16 ); ?></Image>
+	<Image height="32" width="32"><?php echo get_site_icon_url( 32 ); ?></Image>
+	<Image height="64" width="64"><?php echo get_site_icon_url( 64 ); ?></Image>
 <?php
 		}
 	}
