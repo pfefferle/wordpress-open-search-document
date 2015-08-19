@@ -43,7 +43,7 @@ class OpenSearchDocumentPlugin {
 		add_action( 'rss2_head', array( 'OpenSearchDocumentPlugin', 'add_rss_head' ) );
 		add_filter( 'xrds_simple', array( 'OpenSearchDocumentPlugin', 'add_xrds_simple_links' ) );
 		add_filter( 'host_meta', array( 'OpenSearchDocumentPlugin', 'add_xrd_links' ) );
-		add_filter( 'webfinger', array( 'OpenSearchDocumentPlugin', 'add_xrd_links' ) );
+		add_filter( 'webfinger_user_data', array( 'OpenSearchDocumentPlugin', 'add_xrd_links' ) );
 	}
 
 	/**
@@ -78,30 +78,7 @@ class OpenSearchDocumentPlugin {
 	 * Render the OpenSearch document
 	 */
 	public static function render_discovery() {
-		header( 'Content-Type: application/opensearchdescription+xml' );
-		header( 'Encoding: ' . get_bloginfo( 'charset' ) );
-		echo '<?xml version="1.0" encoding="' . get_bloginfo( 'charset' ) . '"?>';
-	?>
-
-<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/ <?php do_action( 'osd_ns' ); ?>">
-	<ShortName><?php bloginfo( 'name' ); ?></ShortName>
-	<Description><?php bloginfo( 'description' ); ?></Description>
-	<Url type="text/html" method="get" template="<?php echo site_url( '/?s={searchTerms}' ); ?>"></Url>
-	<Url type="application/atom+xml" method="get" template="<?php echo add_query_arg( 's', '{searchTerms}', bloginfo( 'atom_url' ) ); ?>" />
-	<Url type="application/rss+xml" method="get" template="<?php echo add_query_arg( 's', '{searchTerms}', bloginfo( 'rss2_url' ) ); ?>" />
-	<Url type="application/x-suggestions+json" method="get" template="<?php echo site_url( '/?opensearch=suggestions&amp;s={searchTerms}' ); ?>"/>
-	<Contact><?php bloginfo( 'admin_email' ); ?></Contact>
-	<LongName><?php bloginfo( 'name' ); ?> Web Search</LongName>
-	<Tags>wordpress blog</Tags>
-	<Query role="example" searchTerms="blog" />
-	<Developer>johnnoone, Matthias Pfefferle</Developer>
-	<Language><?php bloginfo( 'language' ); ?></Language>
-	<OutputEncoding><?php bloginfo( 'charset' ); ?></OutputEncoding>
-	<InputEncoding><?php bloginfo( 'charset' ); ?></InputEncoding>
-	<?php do_action( 'osd_xml' ); ?>
-</OpenSearchDescription>
-
-	<?php
+		load_template( dirname( __FILE__ ) . '/open-search-document-xml.php' );
 		exit;
 	}
 
