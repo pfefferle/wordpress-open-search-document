@@ -5,7 +5,7 @@
 **Tags:** open search, opensearch, open search document, osd, search  
 **Requires at least:** 2.1  
 **Tested up to:** 4.3  
-**Stable tag:** 2.0.0  
+**Stable tag:** 2.1.0  
 
 Create an Open Search Document for your blog.
 
@@ -23,6 +23,10 @@ The plugin supports:
 * [OpenSearch Suggestions extension](http://www.opensearch.org/Specifications/OpenSearch/Extensions/Suggestions/1.0)
 
 ## Changelog ##
+
+### 2.1.0 ###
+* fixed XML output
+* encapsulated XML data
 
 ### 2.0.0 ###
 * complete refactoring
