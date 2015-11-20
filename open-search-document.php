@@ -187,9 +187,9 @@ class OpenSearchDocumentPlugin {
 	 * @return array        updated list of icons
 	 */
 	public static function site_icon_image_sizes( $sizes ) {
-		$sizes[] = '16';
-		$sizes[] = '32';
-		$sizes[] = '64';
+		$sizes[] = 16;
+		$sizes[] = 32;
+		$sizes[] = 64;
 
 		return array_unique( $sizes );
 	}
