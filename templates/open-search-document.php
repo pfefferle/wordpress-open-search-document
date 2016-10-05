@@ -7,7 +7,7 @@ echo '<?xml version="1.0" encoding="' . get_bloginfo( 'charset' ) . '"?>' . PHP_
 	<Url type="text/html" method="get" template="<?php echo site_url( '/?s={searchTerms}' ); ?>"></Url>
 	<Url type="application/atom+xml" method="get" template="<?php echo add_query_arg( 's', '{searchTerms}', bloginfo( 'atom_url' ) ); ?>" />
 	<Url type="application/rss+xml" method="get" template="<?php echo add_query_arg( 's', '{searchTerms}', bloginfo( 'rss2_url' ) ); ?>" />
-	<Url type="application/x-suggestions+json" method="get" template="<?php echo rest_url( 'opensearch/1.1/suggestions&amp;s={searchTerms}' ); ?>"/>
+	<Url type="application/x-suggestions+json" method="get" template="<?php echo rest_url( 'opensearch/1.1/suggestions?s={searchTerms}' ); ?>"/>
 	<Contact><?php bloginfo( 'admin_email' ); ?></Contact>
 	<LongName><?php bloginfo( 'name' ); ?> Web Search</LongName>
 	<Tags>wordpress blog</Tags>
