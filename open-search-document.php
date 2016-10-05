@@ -1,14 +1,14 @@
 <?php
-/*
-Plugin Name: Open Search Document
-Plugin URI: http://wordpress.org/plugins/open-search-document/
-Description: Create an Open Search Document for your blog.
-Version: 2.1.2
-Author: johnnoone, pfefferle
-Author URI: https://github.com/pfefferle/wordpress-open-search-document/
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-*/
+/**
+ * Plugin Name: Open Search Document
+ * Plugin URI: http://wordpress.org/plugins/open-search-document/
+ * Description: Create an Open Search Document for your blog.
+ * Version: 3.0.0
+ * Author: johnnoone, pfefferle
+ * Author URI: https://github.com/pfefferle/wordpress-open-search-document/
+ * License: GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ */
 
 add_filter( 'init', array( 'OpenSearchDocumentPlugin', 'init' ) );
 
@@ -24,17 +24,9 @@ class OpenSearchDocumentPlugin {
 	 * Initialize plugin
 	 */
 	public static function init() {
-		add_filter( 'query_vars', array( 'OpenSearchDocumentPlugin', 'query_vars' ) );
-		add_action( 'parse_request', array( 'OpenSearchDocumentPlugin', 'parse_request' ) );
 		add_action( 'atom_ns', array( 'OpenSearchDocumentPlugin', 'add_atom_namespace' ) );
 
 		add_filter( 'site_icon_image_sizes', array( 'OpenSearchDocumentPlugin', 'site_icon_image_sizes' ) );
-
-		add_action( 'opensearch_1.1', array( 'OpenSearchDocumentPlugin', 'render_discovery' ) );
-		add_action( 'opensearch_suggestions', array( 'OpenSearchDocumentPlugin', 'render_suggestions' ), 10, 1 );
-		// Backwards compatibility.
-		add_action( 'opensearch_true', array( 'OpenSearchDocumentPlugin', 'render_discovery' ) );
-
 		add_action( 'osd_xml', array( 'OpenSearchDocumentPlugin', 'osd_xml' ) );
 
 		// Add autodiscovery.
@@ -44,98 +36,42 @@ class OpenSearchDocumentPlugin {
 		add_filter( 'xrds_simple', array( 'OpenSearchDocumentPlugin', 'add_xrds_simple_links' ) );
 		add_filter( 'host_meta', array( 'OpenSearchDocumentPlugin', 'add_xrd_links' ) );
 		add_filter( 'webfinger_user_data', array( 'OpenSearchDocumentPlugin', 'add_xrd_links' ) );
-	}
 
-	/**
-	 * Add some query-vars
-	 *
-	 * @param array $vars query vars.
-	 * @return array updated query vars
-	 */
-	public static function query_vars( $vars ) {
-		$vars[] = 'opensearch';
-		$vars[] = 's';
-
-		return $vars;
-	}
-
-	/**
-	 * Parse request and "do" some actions
-	 *
-	 * @param $wp
-	 */
-	public static function parse_request( $wp ) {
-		// check if it is an opensearch request or not
-		if ( array_key_exists( 'opensearch', $wp->query_vars ) ) {
-			$opensearch = $wp->query_vars['opensearch'];
-
-			do_action( 'opensearch', $opensearch, $wp->query_vars );
-			do_action( "opensearch_{$opensearch}", $wp->query_vars );
-		}
-	}
-
-	/**
-	 * Render the OpenSearch document
-	 */
-	public static function render_discovery() {
-		load_template( dirname( __FILE__ ) . '/open-search-document-xml.php' );
-		exit;
-	}
-
-	/**
-	 * Render the the suggestion JSON, based on the WordPress tags
-	 *
-	 * @param $query_vars array the query vars as array.
-	 */
-	public static function render_suggestions( $query_vars ) {
-		$tags = array();
-		$output = array();
-
-		header( 'Access-Control-Allow-Origin: *' );
-		header( 'Content-Type: application/json; charset=' . get_bloginfo( 'charset' ), true );
-
-		if ( ! array_key_exists( 's', $query_vars ) ) {
-			echo json_encode( $output );
-			exit;
-		}
-
-		foreach ( get_tags( 'search='.$query_vars['s'] ) as $tag ) {
-			$tags[] = $tag->name;
-		}
-
-		$output[] = $query_vars['s'];
-		$output[] = $tags;
-
-		echo wp_json_encode( $output );
-		exit;
+		// API
+		require_once( dirname( __FILE__ ) . '/includes/class-wp-rest-open-search-controller.php' );
+		// Configure the REST API route.
+		add_action( 'rest_api_init', array( 'WP_REST_Open_Search_Controller', 'register_routes' ) );
+		// Filter the REST API response to output XML if requested.
+		// Filter the response to allow plaintext
+		add_filter( 'rest_pre_serve_request', array( 'WP_REST_Open_Search_Controller', 'serve_request' ), 9, 4 );
 	}
 
 	/**
 	 * HTML/Atom autodiscovery header
 	 */
 	public static function add_head() {
-		echo '<link rel="search" type="application/opensearchdescription+xml" title="Search ' . get_bloginfo( 'name' ) . '" href="' . site_url( '/?opensearch=1.1' ) . '" />' . "\n";
+		echo '<link rel="search" type="application/opensearchdescription+xml" title="Search ' . get_bloginfo( 'name' ) . '" href="' . rest_url( 'opensearch/1.1/document' ) . '" />' . PHP_EOL;
 	}
 
 	/**
 	 * RSS autodiscovery header
 	 */
 	public static function add_rss_head() {
-		echo '<atom:link rel="search" type="application/opensearchdescription+xml" title="Search ' . get_bloginfo( 'name' ) . '" href="' . site_url( '/?opensearch=1.1' ) . '" />' . "\n";
+		echo '<atom:link rel="search" type="application/opensearchdescription+xml" title="Search ' . get_bloginfo( 'name' ) . '" href="' . rest_url( 'opensearch/1.1/document' ) . '" />' . PHP_EOL;
 	}
 
 	/**
 	 * Atom namespace
 	 */
 	public static function add_atom_namespace() {
-		echo ' xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" ' . "\n";
+		echo ' xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" ' . PHP_EOL;
 	}
 
 	/**
 	 * RSS namespace
 	 */
 	public static function add_rss_namespace() {
-		echo ' xmlns:atom="http://www.w3.org/2005/Atom" ' . "\n";
+		echo ' xmlns:atom="http://www.w3.org/2005/Atom" ' . PHP_EOL;
 	}
 
 	/**
@@ -149,7 +85,7 @@ class OpenSearchDocumentPlugin {
 			array(
 				'Type' => array( array( 'content' => 'http://a9.com/-/spec/opensearch/1.1/' ) ),
 				'MediaType' => array( array( 'content' => 'application/opensearchdescription+xml' ) ),
-				'URI' => array( array( 'content' => site_url( '/?opensearch=1.1' ) ) ),
+				'URI' => array( array( 'content' => rest_url( 'opensearch/1.1/document' ) ) ),
 			)
 		);
 		return $xrds;
@@ -162,7 +98,11 @@ class OpenSearchDocumentPlugin {
 	 * @return array updated XRD array
 	 */
 	public static function add_xrd_links( $xrd ) {
-		$xrd['links'][] = array( 'rel' => 'http://a9.com/-/spec/opensearch/1.1/', 'href' => site_url( '/?opensearch=1.1' ), 'type' => 'application/opensearchdescription+xml' );
+		$xrd['links'][] = array(
+			'rel' => 'http://a9.com/-/spec/opensearch/1.1/',
+			'href' => rest_url( 'opensearch/1.1/document' ),
+			'type' => 'application/opensearchdescription+xml',
+		);
 
 		return $xrd;
 	}

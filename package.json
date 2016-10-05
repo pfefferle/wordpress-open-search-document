@@ -1,6 +1,5 @@
 {
   "name": "wordpress-open-search-document",
-  "version": "2.0.0",
   "description": "Create an Open Search Document for your blog.",
   "repository": {
     "type": "git",
