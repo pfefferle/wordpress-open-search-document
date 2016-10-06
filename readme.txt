@@ -11,6 +11,11 @@ Create an OpenSearch Document for your blog.
 
 Create an OpenSearch Document for your blog.
 
+The plugin supports Google Chromes "[Tab to Search](https://www.chromium.org/tab-to-search)",
+Firefox' "[OpenSearch plugins](https://developer.mozilla.org/de/docs/OpenSearch_Plugin_f%C3%BCr_Firefox_erstellen)",
+Safaris "[Quick Website Search](https://developer.apple.com/library/content/releasenotes/General/WhatsNewInSafari/Articles/Safari_8_0.html)",
+and [custom searches](https://support.microsoft.com/de-de/instantanswers/390c87f8-911e-47a3-adca-c80a1e4076ca/change-the-default-search-engine-in-microsoft-edge) for Microsofts Edge browser.
+
 From the [spec](http://www.opensearch.org/Specifications/OpenSearch/1.1):
 
 > Search clients can use OpenSearch description documents to learn about the
@@ -19,7 +24,7 @@ From the [spec](http://www.opensearch.org/Specifications/OpenSearch/1.1):
 > search requests. Search engines can use the OpenSearch response elements to
 > add search metadata to results in a variety of content formats.
 
-The plugin supports:
+The plugin includes:
 
 * Extension links for [HTML](http://www.opensearch.org/Specifications/OpenSearch/1.1#Autodiscovery_in_HTML.2FXHTML), [Atom and RSS](http://www.opensearch.org/Specifications/OpenSearch/1.1#Autodiscovery_in_RSS.2FAtom)
 * Autodiscovery via [XRDS-Simple](http://wordpress.org/extend/plugins/xrds-simple/), [host-meta](http://wordpress.org/extend/plugins/host-meta/) and [webfinger](http://wordpress.org/extend/plugins/webfinger/)
