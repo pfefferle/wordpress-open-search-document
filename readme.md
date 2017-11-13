@@ -1,3 +1,5 @@
+[![WordPress](https://img.shields.io/wordpress/v/open-search-document.svg?style=flat-square)](https://wordpress.org/plugins/open-search-document/) [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/open-search-document.svg?style=flat-square)](https://wordpress.org/plugins/open-search-document/changelog/) [![WordPress](https://img.shields.io/wordpress/plugin/dt/open-search-document.svg?style=flat-square)](https://wordpress.org/plugins/open-search-document/) 
+
 # Open Search #
 **Contributors:** pfefferle, johnnoone  
 **Tags:** open search, opensearch, open search document, osd, search  
@@ -11,18 +13,11 @@ Create an OpenSearch Document for your blog.
 
 Create an OpenSearch Document for your blog.
 
-The plugin supports Google Chromes "[Tab to Search](https://www.chromium.org/tab-to-search)",
-Firefox' "[OpenSearch plugins](https://developer.mozilla.org/de/docs/OpenSearch_Plugin_f%C3%BCr_Firefox_erstellen)",
-Safaris "[Quick Website Search](https://developer.apple.com/library/content/releasenotes/General/WhatsNewInSafari/Articles/Safari_8_0.html)",
-and [custom searches](https://support.microsoft.com/de-de/instantanswers/390c87f8-911e-47a3-adca-c80a1e4076ca/change-the-default-search-engine-in-microsoft-edge) for Microsofts Edge browser.
+The plugin supports Google Chromes "[Tab to Search](https://www.chromium.org/tab-to-search)", Firefox' "[OpenSearch plugins](https://developer.mozilla.org/de/docs/OpenSearch_Plugin_f%C3%BCr_Firefox_erstellen)", Safaris "[Quick Website Search](https://developer.apple.com/library/content/releasenotes/General/WhatsNewInSafari/Articles/Safari_8_0.html)", and [custom searches](https://support.microsoft.com/de-de/instantanswers/390c87f8-911e-47a3-adca-c80a1e4076ca/change-the-default-search-engine-in-microsoft-edge) for Microsofts Edge browser.
 
 From the [spec](http://www.opensearch.org/Specifications/OpenSearch/1.1):
 
-> Search clients can use OpenSearch description documents to learn about the
-> public interface of a search engine. These description documents contain
-> parameterized URL templates that indicate how the search client should make
-> search requests. Search engines can use the OpenSearch response elements to
-> add search metadata to results in a variety of content formats.
+> Search clients can use OpenSearch description documents to learn about the public interface of a search engine. These description documents contain parameterized URL templates that indicate how the search client should make search requests. Search engines can use the OpenSearch response elements to add search metadata to results in a variety of content formats.
 
 The plugin includes:
 
