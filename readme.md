@@ -4,8 +4,8 @@
 **Contributors:** pfefferle, johnnoone  
 **Tags:** open search, opensearch, open search document, osd, search  
 **Requires at least:** 4.6  
-**Tested up to:** 4.6.2  
-**Stable tag:** 3.0.0  
+**Tested up to:** 4.9.2  
+**Stable tag:** 3.0.1  
 
 Create an OpenSearch Document for your blog.
 
@@ -39,6 +39,10 @@ The plugin includes:
 
 
 ## Changelog ##
+
+### 3.0.1 ###
+* added screenshots
+* code improvements
 
 ### 3.0.0 ###
 * moved to WordPress API
