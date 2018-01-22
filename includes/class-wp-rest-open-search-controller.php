@@ -49,7 +49,7 @@ final class WP_REST_Open_Search_Controller {
 		// If someone tries to poll the webmention endpoint return a webmention form.
 		if ( ! headers_sent() ) {
 			header( 'Access-Control-Allow-Origin: *' );
-			header( 'Content-Type: application/opensearchdescription+xml; charset=' . get_bloginfo( 'charset' ), true );
+			header( sprintf( 'Content-Type: application/opensearchdescription+xml; charset=%s', get_bloginfo( 'charset' ) ), true );
 		}
 
 		load_template( dirname( __FILE__ ) . '/../templates/open-search-document.php' );
@@ -87,7 +87,7 @@ final class WP_REST_Open_Search_Controller {
 
 		if ( ! headers_sent() ) {
 			header( 'Access-Control-Allow-Origin: *' );
-			header( 'Content-Type: application/json; charset=' . get_bloginfo( 'charset' ), true );
+			header( sprintf( 'Content-Type: application/json; charset=%s', get_bloginfo( 'charset' ) ), true );
 		}
 
 		foreach ( get_tags( 'search=' . $request['s'] ) as $tag ) {

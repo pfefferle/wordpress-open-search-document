@@ -22,9 +22,21 @@ From the [spec](http://www.opensearch.org/Specifications/OpenSearch/1.1):
 The plugin includes:
 
 * Extension links for [HTML](http://www.opensearch.org/Specifications/OpenSearch/1.1#Autodiscovery_in_HTML.2FXHTML), [Atom and RSS](http://www.opensearch.org/Specifications/OpenSearch/1.1#Autodiscovery_in_RSS.2FAtom)
-* Autodiscovery via [XRDS-Simple](http://wordpress.org/extend/plugins/xrds-simple/), [host-meta](http://wordpress.org/extend/plugins/host-meta/) and [webfinger](http://wordpress.org/extend/plugins/webfinger/)
+* Autodiscovery via [XRDS-Simple](http://wordpress.org/plugins/xrds-simple/), [host-meta](http://wordpress.org/plugins/host-meta/) and [WebFinger](http://wordpress.org/plugins/webfinger/)
 * [RSS and Atom search responses](http://www.opensearch.org/Specifications/OpenSearch/1.1#Examples_of_OpenSearch_responses)
 * [OpenSearch Suggestions extension](http://www.opensearch.org/Specifications/OpenSearch/Extensions/Suggestions/1.0)
+
+## Screenshots ##
+
+### 1. Firefox OpenSearch plugins ###
+![Firefox OpenSearch plugins](https://ps.w.org/open-search-document/trunk/screenshot-1.png)
+
+### 2. Safari Quick Website Search ###
+![Safari Quick Website Search](https://ps.w.org/open-search-document/trunk/screenshot-2.png)
+
+### 3. Chrome Tab to Search ###
+![Chrome Tab to Search](https://ps.w.org/open-search-document/trunk/screenshot-3.png)
+
 
 ## Changelog ##
 

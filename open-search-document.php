@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Open Search Document
- * Plugin URI: http://wordpress.org/plugins/open-search-document/
+ * Plugin URI: https://github.com/pfefferle/wordpress-open-search-document/
  * Description: Create an Open Search Document for your blog.
- * Version: 3.0.0
+ * Version: 3.0.1
  * Author: johnnoone, pfefferle
  * Author URI: https://github.com/pfefferle/wordpress-open-search-document/
  * License: GPLv2 or later
@@ -50,14 +50,14 @@ class OpenSearchDocumentPlugin {
 	 * HTML/Atom autodiscovery header
 	 */
 	public static function add_head() {
-		echo '<link rel="search" type="application/opensearchdescription+xml" title="Search ' . get_bloginfo( 'name' ) . '" href="' . rest_url( 'opensearch/1.1/document' ) . '" />' . PHP_EOL;
+		printf( '<link rel="search" type="application/opensearchdescription+xml" title="Search %s" href="%s" />', get_bloginfo( 'name' ), rest_url( 'opensearch/1.1/document' ) ) . PHP_EOL;
 	}
 
 	/**
 	 * RSS autodiscovery header
 	 */
 	public static function add_rss_head() {
-		echo '<atom:link rel="search" type="application/opensearchdescription+xml" title="Search ' . get_bloginfo( 'name' ) . '" href="' . rest_url( 'opensearch/1.1/document' ) . '" />' . PHP_EOL;
+		printf( '<atom:link rel="search" type="application/opensearchdescription+xml" title="Search %s" href="%s" />', get_bloginfo( 'name' ), rest_url( 'opensearch/1.1/document' ) ) . PHP_EOL;
 	}
 
 	/**
