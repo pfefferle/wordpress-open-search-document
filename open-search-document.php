@@ -3,7 +3,7 @@
  * Plugin Name: Open Search Document
  * Plugin URI: https://github.com/pfefferle/wordpress-open-search-document/
  * Description: Create an Open Search Document for your blog.
- * Version: 3.0.1
+ * Version: 3.0.2
  * Author: johnnoone, pfefferle
  * Author URI: https://github.com/pfefferle/wordpress-open-search-document/
  * License: GPLv2 or later
@@ -99,7 +99,7 @@ class OpenSearchDocumentPlugin {
 	 */
 	public static function add_xrd_links( $xrd ) {
 		$xrd['links'][] = array(
-			'rel' => 'http://a9.com/-/spec/opensearch/1.1/',
+			'rel'  => 'http://a9.com/-/spec/opensearch/1.1/',
 			'href' => rest_url( 'opensearch/1.1/document' ),
 			'type' => 'application/opensearchdescription+xml',
 		);
