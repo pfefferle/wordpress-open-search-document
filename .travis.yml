@@ -17,7 +17,7 @@ env:
   - WP_TRAVISCI=travis:phpunit
   - SVN_REPO: https://plugins.svn.wordpress.org/open-search-document/
   - GH_REF: https://github.com/pfefferle/wordpress-open-search-document.git
-  - secure: "TFXc9CK6cG4Qpwm0sAhA0nEwMBfKKTdp3YN+rVV8KZrSmUDGw8QRlnFAxwWVG9yR1+TBVSS3Rrm38iRU8mvXkl5Vy6/HySqDF2QOO/gqhDZRpgCOq0mhxfzSc+tx2gGXbkRQw+eXt02p6VIHDi+bfll2rdvsE2XxkVgjvYJ+OMnfiqnESwac2+/rxii8qAvQwGnH/Cx7mpSFmt5KmRkR0XL05b9NEV+YkUpSQfSMx45IR2MZKlKAALTulDFIXvcwRMHSydgH8RoLDOioajgUzgFv1vBOWbCvdoHVvrNk2phtYgJ1yvOsMdKeb+Y5ZStag1HeKhZrzFMWJabe63N5Yukzo8gzU6doAPYaJ4CX6KaEEJoQyzxd5IUXZThNcnKStRVJbWngG850ROVCMg8rQYBQXr9HfeHMKGHCXzdXHc1zc13B5ycTL6pc0vWWys16Mdu8ivaPfk7qdnRZs2mpMeYZc4FoRy/xqavcyZX7kGnlONVcgoB4lP5eEQzu+wCWyjXcl4wrQfhCFCrS86jp1oLVUAS9GemPJRwVTWogEg+Rr5iMbWv6ZGh3F8fe5SEEAtThe8W9/hDC7NiZrbdA8hTyccRd91E7EEdCoZrTgc9VjKVkjxLjKHmocruevQQjafda5xsjRRZakAham9r9Rmfk4SH/4KBbWsFJlbHXZjE="
+  - secure: "OSjmVB3O8Y4XAKJ8vWMqqg8PUyNjFJQI15nqB6JGuCxuE4kIhATnAt9TojdAt4EoLFXFpbpYvsaomGpgmyZOQ81qKHwWN3Pv45zWx4XnvMlESU4tiNKAA2JJ8EDoYvgLDY1POSctE8iMFsBM9lOhwrU0WstOwmy3kJkydqMyP4WHaotpjXLi4Qoqc6jvmFm0DmI4JW4bPFG/yCdioWuBxSWCLPSQIxy9BklXlYRrKJQH9G1DiJu/Lrn3bMDdXgNFN0KLyvnnonDb8DPUpJkMQOg1eXYGknwkmwxOtZ6j90WlhSUTurGrn2SjUOxt5ElI3LcBt/JN6ano2Ik6M1+mJalBm0PEReifflwJGwoW+5XZmJjosaScX6CfcklxpuQXkPaIVlYPycJG3ZlgBJqsBwZzFqftw3peLXE551P0FOyxrUnb+BqlqstISgiSoGZlJwPIXIhxVE4dz9jqLG/gHqosWXtpJ2JTKFzN2RpuTgal019+EYrMxaClmAQNW5omfiNKwBOJ+nuoiJurP5x+0g5rdlZVUAU7Z2n5z+xwyD2oq7F3NQAQQlqjzjGs9fI83iHhZbQW2hAVdvcmOErOVDs0WjbFY02dcnH5yIZn5/eti8ePudj7tQ9JhhCj3Vzy9XNXj4OjOMJ7G9xSzTUAyXau9NxtwKh0QMHAUdUQffc="
 matrix:
   include:
   - php: 7.3
@@ -26,7 +26,7 @@ matrix:
   - php: 7.0
   - php: 5.6
   - php: 5.6
-    env: WP_PLUGIN_DEPLOY=1
+    env: WP_VERSION=latest WP_MULTISITE=0 WP_PLUGIN_DEPLOY=1
   - php: 5.5
     env: WP_VERSION=4.7 WP_MULTISITE=0
   - php: 5.4
