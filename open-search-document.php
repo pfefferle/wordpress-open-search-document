@@ -3,7 +3,7 @@
  * Plugin Name: Open Search Document
  * Plugin URI: https://github.com/pfefferle/wordpress-open-search-document/
  * Description: Create an Open Search Document for your blog.
- * Version: 3.0.2
+ * Version: 3.0.3
  * Author: johnnoone, pfefferle
  * Author URI: https://github.com/pfefferle/wordpress-open-search-document/
  * License: GPLv2 or later
@@ -81,11 +81,20 @@ class OpenSearchDocumentPlugin {
 	 * @return array updated XRDS-Simple array
 	 */
 	public static function add_xrds_simple_links( $xrds ) {
-		$xrds = xrds_add_service( $xrds, 'main', 'OpenSearchDocument',
+		$xrds = xrds_add_service(
+			$xrds,
+			'main',
+			'OpenSearchDocument',
 			array(
-				'Type' => array( array( 'content' => 'http://a9.com/-/spec/opensearch/1.1/' ) ),
-				'MediaType' => array( array( 'content' => 'application/opensearchdescription+xml' ) ),
-				'URI' => array( array( 'content' => rest_url( 'opensearch/1.1/document' ) ) ),
+				'Type'      => array(
+					array( 'content' => 'http://a9.com/-/spec/opensearch/1.1/' ),
+				),
+				'MediaType' => array(
+					array( 'content' => 'application/opensearchdescription+xml' ),
+				),
+				'URI'       => array(
+					array( 'content' => rest_url( 'opensearch/1.1/document' ) ),
+				),
 			)
 		);
 		return $xrds;
@@ -112,11 +121,11 @@ class OpenSearchDocumentPlugin {
 	 */
 	public static function osd_xml() {
 		if ( function_exists( 'get_site_icon_url' ) && has_site_icon() ) {
-?>
+			?>
 	<Image height="16" width="16"><?php echo get_site_icon_url( 16 ); ?></Image>
 	<Image height="32" width="32"><?php echo get_site_icon_url( 32 ); ?></Image>
 	<Image height="64" width="64"><?php echo get_site_icon_url( 64 ); ?></Image>
-<?php
+			<?php
 		}
 	}
 

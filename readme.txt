@@ -3,7 +3,7 @@ Contributors: pfefferle, johnnoone
 Tags: open search, opensearch, open search document, osd, search
 Requires at least: 4.6
 Tested up to: 5.5
-Stable tag: 3.0.2
+Stable tag: 3.0.3
 
 Create an OpenSearch Document for your blog.
 
@@ -31,6 +31,9 @@ The plugin includes:
 3. Chrome Tab to Search
 
 == Changelog ==
+
+= 3.0.3 =
+* fix missing permission callback
 
 = 3.0.2 =
 * update requirements

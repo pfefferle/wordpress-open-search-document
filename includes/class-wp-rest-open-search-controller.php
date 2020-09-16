@@ -7,24 +7,34 @@ final class WP_REST_Open_Search_Controller {
 	 * Register the API routes.
 	 */
 	public static function register_routes() {
-		register_rest_route( 'opensearch/1.1', '/document', array(
+		register_rest_route(
+			'opensearch/1.1',
+			'/document',
 			array(
-				'methods'  => WP_REST_Server::READABLE,
-				'callback' => array( 'WP_REST_Open_Search_Controller', 'get_document' ),
-			),
-		) );
-
-		register_rest_route( 'opensearch/1.1', '/suggestions', array(
-			array(
-				'methods'  => WP_REST_Server::READABLE,
-				'callback' => array( 'WP_REST_Open_Search_Controller', 'get_suggestions' ),
-				'args' => array(
-					's' => array(
-						'sanitize_callback' => 'sanitize_key',
-					),
+				array(
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => array( 'WP_REST_Open_Search_Controller', 'get_document' ),
+					'permission_callback' => '__return_true',
 				),
-			),
-		) );
+			)
+		);
+
+		register_rest_route(
+			'opensearch/1.1',
+			'/suggestions',
+			array(
+				array(
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => array( 'WP_REST_Open_Search_Controller', 'get_suggestions' ),
+					'args'                => array(
+						's' => array(
+							'sanitize_callback' => 'sanitize_key',
+						),
+					),
+					'permission_callback' => '__return_true',
+				),
+			)
+		);
 	}
 
 	/**
@@ -78,7 +88,7 @@ final class WP_REST_Open_Search_Controller {
 	 * @return WP_Error|WP_REST_Response
 	 */
 	public static function get_suggestions( $request ) {
-		$tags = array();
+		$tags        = array();
 		$suggestions = array();
 
 		if ( ! isset( $request['s'] ) ) {
