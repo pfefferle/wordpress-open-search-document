@@ -2,6 +2,8 @@
 .editorconfig
 .git
 .gitignore
+.gitattributes
+.distignore
 .github
 .wordpress-org
 .travis.yml
