@@ -1,8 +1,25 @@
 <?php
+
+namespace OpenSearchDocument;
+
+use WP_Error;
+use WP_REST_Server;
+
 /**
- * Class WP_REST_Open_Search_Controller
+ * Class WP_REST_Controller
  */
-final class WP_REST_Open_Search_Controller {
+class WP_REST_Controller {
+	/**
+	 * Initialize class.
+	 */
+	public static function init() {
+		// Configure the REST API route.
+		add_action( 'rest_api_init', array( static::class, 'register_routes' ) );
+		// Filter the REST API response to output XML if requested.
+		// Filter the response to allow plaintext
+		add_filter( 'rest_pre_serve_request', array( static::class, 'serve_request' ), 9, 4 );
+	}
+
 	/**
 	 * Register the API routes.
 	 */
@@ -13,7 +30,7 @@ final class WP_REST_Open_Search_Controller {
 			array(
 				array(
 					'methods'             => WP_REST_Server::READABLE,
-					'callback'            => array( 'WP_REST_Open_Search_Controller', 'get_document' ),
+					'callback'            => array( static::class, 'get_document' ),
 					'permission_callback' => '__return_true',
 				),
 			)
@@ -25,7 +42,7 @@ final class WP_REST_Open_Search_Controller {
 			array(
 				array(
 					'methods'             => WP_REST_Server::READABLE,
-					'callback'            => array( 'WP_REST_Open_Search_Controller', 'get_suggestions' ),
+					'callback'            => array( static::class, 'get_suggestions' ),
 					'args'                => array(
 						's' => array(
 							'sanitize_callback' => 'sanitize_key',

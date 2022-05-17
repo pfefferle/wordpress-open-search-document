@@ -3,7 +3,7 @@ Contributors: pfefferle, johnnoone
 Tags: open search, opensearch, open search document, osd, search
 Requires at least: 4.6
 Tested up to: 6.0
-Stable tag: 3.0.3
+Stable tag: 4.0.0
 
 Create an OpenSearch Document for your blog.
 
@@ -32,11 +32,26 @@ The plugin includes:
 
 == Frequently Asked Questions ==
 
-= "Tab to Search" does not work on the latest version of Chrome =
+= Chromes "Tab to Search" no longer works=
 
 Chromes "Tab to Search" is now an opt-in feature. Go to `chrome://settings/searchEngines`, search for your Website and press the "Activate" button.
 
+= How to add query params to the Search-URLs =
+
+You can add custom params to the search URL using the `osd_search_url_template` filter.
+
+    function custom_osd_extend( $url, $type ) {
+	    $url = add_query_arg( 'mtm_campaign', 'opensearch', $url );
+
+	    return $url;
+    }
+    add_filter( 'osd_search_url_template', 'custom_osd_extend', 10, 2 );
+
 == Changelog ==
+
+= 4.0.0 =
+* modernize code
+* added filters for the search URLs in the OSD document
 
 = 3.0.3 =
 * fix missing permission callback
