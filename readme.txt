@@ -32,7 +32,7 @@ The plugin includes:
 
 == Frequently Asked Questions ==
 
-= Chromes "Tab to Search" no longer works=
+= Chromes "Tab to Search" no longer works =
 
 Chromes "Tab to Search" is now an opt-in feature. Go to `chrome://settings/searchEngines`, search for your Website and press the "Activate" button.
 

@@ -40,9 +40,9 @@ The plugin includes:
 
 ## Frequently Asked Questions ##
 
-### Chromes "Tab to Search" no longer works###
+### Chromes "Tab to Search" no longer works ###
 
-Chromes "Tab to Search" is now an opt-in feature. Go to "chrome://settings/searchEngines", search for your Website and press the "Activate" button.
+Chromes "Tab to Search" is now an opt-in feature. Go to `chrome://settings/searchEngines`, search for your Website and press the "Activate" button.
 
 ### How to add query params to the Search-URLs ###
 
@@ -58,7 +58,7 @@ You can add custom params to the search URL using the `osd_search_url_template` 
 ## Changelog ##
 
 ### 4.0.0 ###
-* complete rewrite of code
+* modernize code
 * added filters for the search URLs in the OSD document
 
 ### 3.0.3 ###
