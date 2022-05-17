@@ -2,7 +2,7 @@
 Contributors: pfefferle, johnnoone
 Tags: open search, opensearch, open search document, osd, search
 Requires at least: 4.6
-Tested up to: 5.9
+Tested up to: 6.0
 Stable tag: 3.0.3
 
 Create an OpenSearch Document for your blog.
@@ -29,6 +29,12 @@ The plugin includes:
 1. Firefox OpenSearch plugins
 2. Safari Quick Website Search
 3. Chrome Tab to Search
+
+== Frequently Asked Questions ==
+
+= "Tab to Search" does not work on the latest version of Chrome =
+
+Chromes "Tab to Search" is now an opt-in feature. Go to `chrome://settings/searchEngines`, search for your Website and press the "Activate" button.
 
 == Changelog ==
 

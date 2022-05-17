@@ -1,10 +1,10 @@
 [![WordPress](https://img.shields.io/wordpress/v/open-search-document.svg?style=flat-square)](https://wordpress.org/plugins/open-search-document/) [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/open-search-document.svg?style=flat-square)](https://wordpress.org/plugins/open-search-document/changelog/) [![WordPress](https://img.shields.io/wordpress/plugin/dt/open-search-document.svg?style=flat-square)](https://wordpress.org/plugins/open-search-document/) 
 
 # Open Search #
-**Contributors:** pfefferle, johnnoone  
+**Contributors:** [pfefferle](https://profiles.wordpress.org/pfefferle/), [johnnoone](https://profiles.wordpress.org/johnnoone/)  
 **Tags:** open search, opensearch, open search document, osd, search  
 **Requires at least:** 4.6  
-**Tested up to:** 5.9  
+**Tested up to:** 6.0  
 **Stable tag:** 3.0.3  
 
 Create an OpenSearch Document for your blog.
@@ -37,6 +37,12 @@ The plugin includes:
 ### 3. Chrome Tab to Search ###
 ![Chrome Tab to Search](https://ps.w.org/open-search-document/trunk/screenshot-3.png)
 
+
+## Frequently Asked Questions ##
+
+### "Tab to Search" does not work on the latest version of Chrome ###
+
+Chromes "Tab to Search" is now an opt-in feature. Go to `chrome://settings/searchEngines`, search for your Website and press the "Activate" button.
 
 ## Changelog ##
 
