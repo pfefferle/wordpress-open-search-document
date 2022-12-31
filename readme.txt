@@ -2,7 +2,7 @@
 Contributors: pfefferle, johnnoone
 Tags: open search, opensearch, open search document, osd, search
 Requires at least: 4.6
-Tested up to: 6.0
+Tested up to: 6.1
 Stable tag: 4.0.0
 
 Create an OpenSearch Document for your blog.
