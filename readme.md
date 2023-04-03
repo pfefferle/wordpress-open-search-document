@@ -4,7 +4,7 @@
 **Contributors:** [pfefferle](https://profiles.wordpress.org/pfefferle/), [johnnoone](https://profiles.wordpress.org/johnnoone/)  
 **Tags:** open search, opensearch, open search document, osd, search  
 **Requires at least:** 4.6  
-**Tested up to:** 6.1  
+**Tested up to:** 6.2  
 **Stable tag:** 4.0.0  
 
 Create an OpenSearch Document for your blog.
