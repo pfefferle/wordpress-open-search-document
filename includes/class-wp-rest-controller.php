@@ -81,7 +81,7 @@ class WP_REST_Controller {
 
 		load_template( dirname( __FILE__ ) . '/../templates/open-search-document.php' );
 
-		return true;
+		return;
 	}
 
 	/**
@@ -93,7 +93,7 @@ class WP_REST_Controller {
 	 * @return WP_Error|WP_REST_Response
 	 */
 	public static function get_document( $request ) {
-		return true;
+		return;
 	}
 
 	/**

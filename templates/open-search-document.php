@@ -8,11 +8,11 @@ echo '<?xml version="1.0" encoding="' . get_bloginfo( 'charset' ) . '"?>' . PHP_
 	<Url type="application/atom+xml" method="get" template="<?php \OpenSearchDocument\feed_url_template( 'atom' ); ?>" />
 	<Url type="application/rss+xml" method="get" template="<?php \OpenSearchDocument\feed_url_template( 'rss2' ); ?>" />
 	<Url type="application/x-suggestions+json" method="get" template="<?php echo rest_url( 'opensearch/1.1/suggestions?s={searchTerms}' ); ?>"/>
-	<Contact><?php bloginfo( 'admin_email' ); ?></Contact>
+	<Contact><?php echo get_home_url(); ?></Contact>
 	<LongName><?php bloginfo( 'name' ); ?> Web Search</LongName>
 	<Tags>WordPress blog</Tags>
 	<Query role="example" searchTerms="blog" />
-	<Developer>johnnoone, Matthias Pfefferle</Developer>
+	<Developer>Matthias Pfefferle</Developer>
 	<Language><?php bloginfo( 'language' ); ?></Language>
 	<OutputEncoding><?php bloginfo( 'charset' ); ?></OutputEncoding>
 	<InputEncoding><?php bloginfo( 'charset' ); ?></InputEncoding>
