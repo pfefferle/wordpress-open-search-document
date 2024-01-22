@@ -5,7 +5,7 @@
 **Tags:** open search, opensearch, open search document, osd, search  
 **Requires at least:** 4.6  
 **Tested up to:** 6.4  
-**Stable tag:** 4.0.0  
+**Stable tag:** 4.0.1  
 
 Create an OpenSearch Document for your blog.
 
@@ -56,6 +56,9 @@ You can add custom params to the search URL using the `osd_search_url_template` 
     add_filter( 'osd_search_url_template', 'custom_osd_extend', 10, 2 );
 
 ## Changelog ##
+
+### 4.0.1 ###
+* fix broken XML output
 
 ### 4.0.0 ###
 * modernize code
