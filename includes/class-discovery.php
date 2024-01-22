@@ -4,6 +4,8 @@ namespace OpenSearchDocument;
 
 use WP_Error;
 
+use function OpenSearchDocument\url_template;
+
 /**
  * Handles all discovery mechanisms
  */
@@ -16,6 +18,7 @@ class Discovery {
 
 		add_filter( 'site_icon_image_sizes', array( static::class, 'site_icon_image_sizes' ) );
 		add_action( 'osd_xml', array( static::class, 'osd_xml' ) );
+		add_filter( 'web_app_manifest', array( static::class, 'web_app_manifest' ) );
 
 		// Add autodiscovery.
 		add_action( 'wp_head', array( static::class, 'add_head' ) );
@@ -124,5 +127,27 @@ class Discovery {
 	<Image height="64" width="64"><?php echo get_site_icon_url( 64 ); ?></Image>
 			<?php
 		}
+	}
+
+	/**
+	 * Modifies the site's web app manifest.
+	 *
+	 * @param array $manifest The associative web app manifest array.
+	 * @return array The filtered $manifest.
+	 */
+	public static function web_app_manifest( $manifest ) {
+		if ( ! isset( $manifest['chrome_settings_overrides'] ) ) {
+			$manifest['chrome_settings_overrides'] = array();
+		}
+
+		$manifest['chrome_settings_overrides']['search_provider'] = array(
+			'name' => \get_bloginfo( 'name' ),
+			'search_url' => url_template( false ),
+			'keyword' => \sanitize_title( get_bloginfo( 'name' ) ),
+			'favicon_url' => \get_site_icon_url( 32 ),
+			'encoding' => \get_bloginfo( 'charset' ),
+		);
+
+		return $manifest;
 	}
 }

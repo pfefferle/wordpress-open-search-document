@@ -3,21 +3,21 @@ Contributors: pfefferle, johnnoone
 Tags: open search, opensearch, open search document, osd, search
 Requires at least: 4.6
 Tested up to: 6.4
-Stable tag: 4.0.1
+Stable tag: 4.1.0
 
 Create an OpenSearch Document for your blog.
 
 == description ==
 
-Create an OpenSearch Document for your blog.
+The plugin creates an OpenSearch Document for your blog.
 
-The plugin supports Google Chromes "[Tab to Search](https://www.chromium.org/tab-to-search)", Firefox' "[OpenSearch plugins](https://developer.mozilla.org/de/docs/OpenSearch_Plugin_f%C3%BCr_Firefox_erstellen)", Safaris "[Quick Website Search](https://developer.apple.com/library/content/releasenotes/General/WhatsNewInSafari/Articles/Safari_8_0.html)", and [custom searches](https://support.microsoft.com/de-de/instantanswers/390c87f8-911e-47a3-adca-c80a1e4076ca/change-the-default-search-engine-in-microsoft-edge) for Microsofts Edge browser.
+It supports Google Chromes ["Tab to Search"](https://www.chromium.org/tab-to-search) and ["search_provider" WebExtension](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/chrome_settings_overrides), Firefox' ["OpenSearch plugins"](https://developer.mozilla.org/en-US/docs/Web/OpenSearch), Safaris ["Quick Website Search"](https://developer.apple.com/library/content/releasenotes/General/WhatsNewInSafari/Articles/Safari_8_0.html), and ["custom searches"](https://support.microsoft.com/en-us/microsoft-edge/change-your-default-search-engine-in-microsoft-edge-cccaf51c-a4df-a43e-8036-d4d2c527a791) for Microsofts Edge browser.
 
 From the [spec](http://www.opensearch.org/Specifications/OpenSearch/1.1):
 
 > Search clients can use OpenSearch description documents to learn about the public interface of a search engine. These description documents contain parameterized URL templates that indicate how the search client should make search requests. Search engines can use the OpenSearch response elements to add search metadata to results in a variety of content formats.
 
-The plugin includes:
+Other integrations and extensions:
 
 * Extension links for [HTML](http://www.opensearch.org/Specifications/OpenSearch/1.1#Autodiscovery_in_HTML.2FXHTML), [Atom and RSS](http://www.opensearch.org/Specifications/OpenSearch/1.1#Autodiscovery_in_RSS.2FAtom)
 * Autodiscovery via [XRDS-Simple](http://wordpress.org/plugins/xrds-simple/), [host-meta](http://wordpress.org/plugins/host-meta/) and [WebFinger](http://wordpress.org/plugins/webfinger/)
@@ -48,6 +48,9 @@ You can add custom params to the search URL using the `osd_search_url_template` 
     add_filter( 'osd_search_url_template', 'custom_osd_extend', 10, 2 );
 
 == Changelog ==
+
+= 4.1.0 =
+* added ["search_provider" WebExtension](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/chrome_settings_overrides) support
 
 = 4.0.1 =
 * fix broken XML output
