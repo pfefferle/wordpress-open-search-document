@@ -5,7 +5,7 @@
 **Tags:** open search, opensearch, open search document, osd, search  
 **Requires at least:** 4.6  
 **Tested up to:** 6.4  
-**Stable tag:** 4.1.0  
+**Stable tag:** 4.1.1  
 
 Create an OpenSearch Document for your blog.
 
@@ -56,6 +56,9 @@ You can add custom params to the search URL using the `osd_search_url_template` 
     add_filter( 'osd_search_url_template', 'custom_osd_extend', 10, 2 );
 
 ## Changelog ##
+
+### 4.1.1 ###
+* fix PHP deprecated: strstr(): Passing null to parameter
 
 ### 4.1.0 ###
 * added ["search_provider" WebExtension](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/chrome_settings_overrides) support

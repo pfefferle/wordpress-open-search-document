@@ -49,7 +49,7 @@ function feed_url_template( $feed, $echo = true ) {
 		return new WP_Error( 'unsupported_feed_type' );
 	}
 
-	$feed_url_template = add_query_arg( 's', 'searchTerms', bloginfo( "{$feed}_url" ) );
+	$feed_url_template = add_query_arg( 's', 'searchTerms', get_bloginfo( "{$feed}_url" ) );
 
 	/**
 	 * Filters the Search-URL-Template
