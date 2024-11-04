@@ -79,7 +79,7 @@ class WP_REST_Controller {
 			header( sprintf( 'Content-Type: application/opensearchdescription+xml; charset=%s', get_bloginfo( 'charset' ) ), true );
 		}
 
-		load_template( dirname( __FILE__ ) . '/../templates/open-search-document.php' );
+		load_template( __DIR__ . '/../templates/open-search-document.php' );
 
 		return;
 	}

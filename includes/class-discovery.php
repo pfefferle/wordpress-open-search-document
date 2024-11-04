@@ -141,11 +141,11 @@ class Discovery {
 		}
 
 		$manifest['chrome_settings_overrides']['search_provider'] = array(
-			'name' => \get_bloginfo( 'name' ),
-			'search_url' => url_template( false ),
-			'keyword' => \sanitize_title( get_bloginfo( 'name' ) ),
+			'name'        => \get_bloginfo( 'name' ),
+			'search_url'  => url_template( false ),
+			'keyword'     => \sanitize_title( get_bloginfo( 'name' ) ),
 			'favicon_url' => \get_site_icon_url( 32 ),
-			'encoding' => \get_bloginfo( 'charset' ),
+			'encoding'    => \get_bloginfo( 'charset' ),
 		);
 
 		return $manifest;
