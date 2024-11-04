@@ -1,17 +1,16 @@
-[![WordPress](https://img.shields.io/wordpress/v/open-search-document.svg?style=flat-square)](https://wordpress.org/plugins/open-search-document/) [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/open-search-document.svg?style=flat-square)](https://wordpress.org/plugins/open-search-document/changelog/) [![WordPress](https://img.shields.io/wordpress/plugin/dt/open-search-document.svg?style=flat-square)](https://wordpress.org/plugins/open-search-document/) 
+# Open Search
 
-# Open Search #
-**Contributors:** [pfefferle](https://profiles.wordpress.org/pfefferle/), [johnnoone](https://profiles.wordpress.org/johnnoone/)  
-**Tags:** open search, opensearch, open search document, osd, search  
-**Requires at least:** 4.6  
-**Tested up to:** 6.6  
-**Stable tag:** 4.1.1  
-**License:** GPL-2.0-or-later  
-**License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
+* Contributors: pfefferle, johnnoone
+* Tags: open search, opensearch, open search document, osd, search
+* Requires at least: 4.6
+* Tested up to: 6.6
+* Stable tag: 4.1.1
+* License: GPL-2.0-or-later
+* License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Create an OpenSearch Document for your blog.
 
-## description ##
+## Description
 
 The plugin creates an OpenSearch Document for your blog.
 
@@ -28,25 +27,19 @@ Other integrations and extensions:
 * [RSS and Atom search responses](http://www.opensearch.org/Specifications/OpenSearch/1.1#Examples_of_OpenSearch_responses)
 * [OpenSearch Suggestions extension](http://www.opensearch.org/Specifications/OpenSearch/Extensions/Suggestions/1.0)
 
-## Screenshots ##
+# Screenshots
 
-### 1. Firefox OpenSearch plugins ###
-![Firefox OpenSearch plugins](https://ps.w.org/open-search-document/trunk/screenshot-1.png)
+1. Firefox OpenSearch plugins
+2. Safari Quick Website Search
+3. Chrome Tab to Search
 
-### 2. Safari Quick Website Search ###
-![Safari Quick Website Search](https://ps.w.org/open-search-document/trunk/screenshot-2.png)
+### Frequently Asked Questions
 
-### 3. Chrome Tab to Search ###
-![Chrome Tab to Search](https://ps.w.org/open-search-document/trunk/screenshot-3.png)
-
-
-## Frequently Asked Questions ##
-
-### Chromes "Tab to Search" no longer works ###
+### Chromes "Tab to Search" no longer works
 
 Chromes "Tab to Search" is now an opt-in feature. Go to `chrome://settings/searchEngines`, search for your Website and press the "Activate" button.
 
-### How to add query params to the Search-URLs ###
+### How to add query params to the Search-URLs
 
 You can add custom params to the search URL using the `osd_search_url_template` filter.
 
@@ -57,74 +50,74 @@ You can add custom params to the search URL using the `osd_search_url_template` 
     }
     add_filter( 'osd_search_url_template', 'custom_osd_extend', 10, 2 );
 
-## Changelog ##
+## Changelog
 
-### 4.1.1 ###
+### 4.1.1
 * fix PHP deprecated: strstr(): Passing null to parameter
 
-### 4.1.0 ###
+### 4.1.0
 * added ["search_provider" WebExtension](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/chrome_settings_overrides) support
 
-### 4.0.1 ###
+### 4.0.1
 * fix broken XML output
 
-### 4.0.0 ###
+### 4.0.0
 * modernize code
 * added filters for the search URLs in the OSD document
 
-### 3.0.3 ###
+### 3.0.3
 * fix missing permission callback
 
-### 3.0.2 ###
+### 3.0.2
 * update requirements
 
-### 3.0.1 ###
+### 3.0.1
 * added screenshots
 * code improvements
 
-### 3.0.0 ###
+### 3.0.0
 * moved to WordPress API
 
-### 2.1.2 ###
+### 2.1.2
 * fixed site icon implementation
 
-### 2.1.1 ###
+### 2.1.1
 * fixed site icon implementation
 
-### 2.1.0 ###
+### 2.1.0
 * fixed XML output
 * encapsulated XML data
 
-### 2.0.0 ###
+### 2.0.0
 * complete refactoring
 * WordPress coding style
 * Site icon support
 
-### 1.3.1 ###
+### 1.3.1
 * Some smaller fixes
 
-### 1.3 ###
+### 1.3
 * fixed host-meta link
 * added webfinger support
 
-### 1.2.2 ###
+### 1.2.2
 * Added function to flush rewrite_rules
 
-### 1.2.1 ###
+### 1.2.1
 * Autodiscovery for host-meta
 
-### 1.2 ###
+### 1.2
 * OpenSearch Suggestions extension
 
-### 1.1 ###
+### 1.1
 * WordPress 2.8.x compatibility
 * Autodiscovery for RSS/Atom and XRDS
 * Profile-Services
 
-### 1.0 ###
+### 1.0
 * Initial release
 
-## Installation ##
+## Installation
 
 1. Upload `open-search-document`-folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the *Plugins* menu in WordPress
