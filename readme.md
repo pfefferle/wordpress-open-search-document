@@ -4,7 +4,7 @@
 * Tags: open search, opensearch, open search document, osd, search
 * Requires at least: 4.6
 * Tested up to: 6.7
-* Stable tag: 4.1.2
+* Stable tag: 4.1.3
 * License: GPL-2.0-or-later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,7 +52,7 @@ You can add custom params to the search URL using the `osd_search_url_template` 
 
 ## Changelog
 
-### 4.1.2
+### 4.1.3
 * update plugin structure
 
 ### 4.1.1
