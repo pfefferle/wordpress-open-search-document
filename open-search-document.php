@@ -3,7 +3,7 @@
  * Plugin Name: Open Search Document
  * Plugin URI: https://github.com/pfefferle/wordpress-open-search-document/
  * Description: Create an Open Search Document for your blog.
- * Version: 4.1.1
+ * Version: 4.1.2
  * Author: Matthias Pfefferle
  * Author URI: https://github.com/pfefferle/wordpress-open-search-document/
  * License: GPL-2.0-or-later
