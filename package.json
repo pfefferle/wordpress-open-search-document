@@ -22,10 +22,5 @@
   "bugs": {
     "url": "https://github.com/pfefferle/wordpress-open-search-document/issues"
   },
-  "devDependencies": {
-    "grunt": "^1.4.1",
-    "grunt-wp-readme-to-markdown": "^2.1.0",
-    "grunt-replace": "*"
-  },
   "homepage": "https://github.com/pfefferle/wordpress-open-search-document#readme"
 }
