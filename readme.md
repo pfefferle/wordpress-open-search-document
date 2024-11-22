@@ -44,9 +44,9 @@ Chromes "Tab to Search" is now an opt-in feature. Go to `chrome://settings/searc
 You can add custom params to the search URL using the `osd_search_url_template` filter.
 
     function custom_osd_extend( $url, $type ) {
-	    $url = add_query_arg( 'mtm_campaign', 'opensearch', $url );
+        $url = add_query_arg( 'mtm_campaign', 'opensearch', $url );
 
-	    return $url;
+        return $url;
     }
     add_filter( 'osd_search_url_template', 'custom_osd_extend', 10, 2 );
 
