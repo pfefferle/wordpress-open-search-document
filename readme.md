@@ -27,13 +27,13 @@ Other integrations and extensions:
 * [RSS and Atom search responses](http://www.opensearch.org/Specifications/OpenSearch/1.1#Examples_of_OpenSearch_responses)
 * [OpenSearch Suggestions extension](http://www.opensearch.org/Specifications/OpenSearch/Extensions/Suggestions/1.0)
 
-# Screenshots
+## Screenshots
 
 1. Firefox OpenSearch plugins
 2. Safari Quick Website Search
 3. Chrome Tab to Search
 
-### Frequently Asked Questions
+## Frequently Asked Questions
 
 ### Chromes "Tab to Search" no longer works
 
