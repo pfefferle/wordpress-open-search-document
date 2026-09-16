@@ -64,7 +64,13 @@ class Test_Discovery extends \WP_UnitTestCase {
 	public function test_osd_xml() {
 		$this->assertSame( '', \get_echo( array( \OpenSearchDocument\Discovery::class, 'osd_xml' ) ) );
 
-		$attachment_id = self::factory()->attachment->create_upload_object( DIR_TESTDATA . '/images/test-image.png' );
+		// An attachment record is enough, the file itself is never read.
+		$attachment_id = self::factory()->attachment->create(
+			array(
+				'post_mime_type' => 'image/png',
+				'file'           => 'icon.png',
+			)
+		);
 		\update_option( 'site_icon', $attachment_id );
 
 		$output = \get_echo( array( \OpenSearchDocument\Discovery::class, 'osd_xml' ) );
@@ -73,7 +79,6 @@ class Test_Discovery extends \WP_UnitTestCase {
 		$this->assertStringContainsString( '<Image height="16" width="16" type="image/png">', $output );
 		$this->assertStringContainsString( \get_site_icon_url( 64 ), $output );
 
-		\wp_delete_attachment( $attachment_id, true );
 		\delete_option( 'site_icon' );
 	}
 
