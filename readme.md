@@ -82,19 +82,20 @@ Yes. The `osd_xml` action runs inside the document, right before the closing tag
 
 ### 4.2.0
 
-* The REST controller extends the WordPress `WP_REST_Controller` class
+* Requires WordPress 6.4 and PHP 7.4
 * Search suggestions keep spaces and upper case letters in the query
-* The document no longer has a stray `null` at the end
-* Site name, description and URLs are escaped for XML
-* The suggestions URL has `rel="suggestions"` and the document links to itself with `rel="self"`
+* The `Tags` element lists the most used tags of the site
 * Site icons carry their MIME type
-* The `Tags` element lists the most used tags of the site, filterable with `osd_tags`
+* The suggestions URL has `rel="suggestions"` and the document links to itself with `rel="self"`
 * Removed the `Contact` element, the spec expects an email address there
 * Removed the `Developer` element
 * Removed the XRDS-Simple integration, the plugin is closed on WordPress.org
+* Fixed a stray `null` at the end of the document
+* Site name, description and URLs are escaped for XML
+* The REST controller extends the WordPress `WP_REST_Controller` class
+* New filters: `osd_tags` and `osd_long_name`
 * `url_template()` and `feed_url_template()` are deprecated, use `get_url_template()`
-* Requires WordPress 6.4 and PHP 7.4
-* Added tests and a new readme
+* Added tests, CI and a new readme
 
 ### 4.1.3
 
@@ -183,6 +184,12 @@ Yes. The `osd_xml` action runs inside the document, right before the closing tag
 ### 1.0
 
 * Initial release
+
+## Upgrade Notice
+
+### 4.2.0
+
+This version requires WordPress 6.4 or higher. Older sites will not be offered the update. The document no longer contains the `Contact` and `Developer` elements, and the XRDS-Simple integration is removed.
 
 ## Installation
 
