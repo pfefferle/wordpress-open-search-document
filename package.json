@@ -1,6 +1,6 @@
 {
   "name": "wordpress-open-search-document",
-  "description": "Create an Open Search Document for your blog.",
+  "description": "Lets browsers search your site straight from the address bar.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pfefferle/wordpress-open-search-document.git"
@@ -14,7 +14,7 @@
     "browser"
   ],
   "author": "Matthias Pfefferle",
-  "license": "GPL-2.0",
+  "license": "GPL-2.0-or-later",
   "bugs": {
     "url": "https://github.com/pfefferle/wordpress-open-search-document/issues"
   },

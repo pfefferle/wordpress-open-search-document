@@ -1,100 +1,88 @@
 <?php
+/**
+ * Discovery.
+ *
+ * @package OpenSearchDocument
+ */
 
 namespace OpenSearchDocument;
 
-use WP_Error;
-
-use function OpenSearchDocument\url_template;
-
 /**
- * Handles all discovery mechanisms
+ * Announces the OpenSearch description document in HTML, feeds and XRD documents.
  */
 class Discovery {
+
 	/**
-	 * Initialize class.
+	 * Hook the discovery mechanisms into WordPress.
 	 */
 	public static function init() {
-		add_action( 'atom_ns', array( static::class, 'add_atom_namespace' ) );
+		\add_action( 'wp_head', array( static::class, 'add_head' ) );
+		\add_action( 'atom_head', array( static::class, 'add_head' ) );
+		\add_action( 'rss2_head', array( static::class, 'add_rss_head' ) );
+		\add_action( 'atom_ns', array( static::class, 'add_atom_namespace' ) );
 
-		add_filter( 'site_icon_image_sizes', array( static::class, 'site_icon_image_sizes' ) );
-		add_action( 'osd_xml', array( static::class, 'osd_xml' ) );
-		add_filter( 'web_app_manifest', array( static::class, 'web_app_manifest' ) );
+		\add_filter( 'host_meta', array( static::class, 'add_xrd_links' ) );
+		\add_filter( 'webfinger_user_data', array( static::class, 'add_xrd_links' ) );
+		\add_filter( 'web_app_manifest', array( static::class, 'web_app_manifest' ) );
 
-		// Add autodiscovery.
-		add_action( 'wp_head', array( static::class, 'add_head' ) );
-		add_action( 'atom_head', array( static::class, 'add_head' ) );
-		add_action( 'rss2_head', array( static::class, 'add_rss_head' ) );
-		add_filter( 'xrds_simple', array( static::class, 'add_xrds_simple_links' ) );
-		add_filter( 'host_meta', array( static::class, 'add_xrd_links' ) );
-		add_filter( 'webfinger_user_data', array( static::class, 'add_xrd_links' ) );
+		\add_filter( 'site_icon_image_sizes', array( static::class, 'site_icon_image_sizes' ) );
+		\add_action( 'osd_xml', array( static::class, 'osd_xml' ) );
 	}
 
 	/**
-	 * HTML/Atom autodiscovery header.
+	 * The title of the search link.
+	 *
+	 * @return string The title.
+	 */
+	protected static function get_title() {
+		/* translators: %s: the site name */
+		return \sprintf( \__( 'Search %s', 'open-search-document' ), \get_bloginfo( 'name' ) );
+	}
+
+	/**
+	 * HTML and Atom autodiscovery link.
 	 */
 	public static function add_head() {
-		printf( '<link rel="search" type="application/opensearchdescription+xml" title="Search %s" href="%s" />', get_bloginfo( 'name' ), rest_url( 'opensearch/1.1/document' ) ) . PHP_EOL;
+		\printf(
+			'<link rel="search" type="application/opensearchdescription+xml" title="%1$s" href="%2$s" />' . PHP_EOL,
+			\esc_attr( static::get_title() ),
+			\esc_url( get_document_url() )
+		);
 	}
 
 	/**
-	 * RSS autodiscovery header.
+	 * RSS autodiscovery link.
 	 */
 	public static function add_rss_head() {
-		printf( '<atom:link rel="search" type="application/opensearchdescription+xml" title="Search %s" href="%s" />', get_bloginfo( 'name' ), rest_url( 'opensearch/1.1/document' ) ) . PHP_EOL;
+		\printf(
+			'<atom:link rel="search" type="application/opensearchdescription+xml" title="%1$s" href="%2$s" />' . PHP_EOL,
+			\esc_attr( static::get_title() ),
+			\esc_url( get_document_url() )
+		);
 	}
 
 	/**
 	 * Atom namespace.
 	 */
 	public static function add_atom_namespace() {
-		echo ' xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" ' . PHP_EOL;
+		echo ' xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/"' . PHP_EOL;
 	}
 
 	/**
-	 * RSS namespace.
-	 */
-	public static function add_rss_namespace() {
-		echo ' xmlns:atom="http://www.w3.org/2005/Atom" ' . PHP_EOL;
-	}
-
-	/**
-	 * XRDS-Simple informations.
+	 * Add the document to host-meta and WebFinger.
 	 *
-	 * @param array $xrds current XRDS-Simple array.
+	 * @param array $xrd The current XRD array.
 	 *
-	 * @return array updated XRDS-Simple array.
-	 */
-	public static function add_xrds_simple_links( $xrds ) {
-		$xrds = xrds_add_service(
-			$xrds,
-			'main',
-			'OpenSearchDocument',
-			array(
-				'Type'      => array(
-					array( 'content' => 'http://a9.com/-/spec/opensearch/1.1/' ),
-				),
-				'MediaType' => array(
-					array( 'content' => 'application/opensearchdescription+xml' ),
-				),
-				'URI'       => array(
-					array( 'content' => rest_url( 'opensearch/1.1/document' ) ),
-				),
-			)
-		);
-		return $xrds;
-	}
-
-	/**
-	 * host-meta/webfinger informations.
-	 *
-	 * @param array $xrd current XRD array.
-	 *
-	 * @return array updated XRD array.
+	 * @return array The updated XRD array.
 	 */
 	public static function add_xrd_links( $xrd ) {
+		if ( ! isset( $xrd['links'] ) || ! \is_array( $xrd['links'] ) ) {
+			$xrd['links'] = array();
+		}
+
 		$xrd['links'][] = array(
 			'rel'  => 'http://a9.com/-/spec/opensearch/1.1/',
-			'href' => rest_url( 'opensearch/1.1/document' ),
+			'href' => get_document_url(),
 			'type' => 'application/opensearchdescription+xml',
 		);
 
@@ -102,38 +90,48 @@ class Discovery {
 	}
 
 	/**
-	 * Add icons.
+	 * Register the icon sizes used in the document.
 	 *
-	 * @param array $sizes sizes available for the site icon.
+	 * @param int[] $sizes The available site icon sizes.
 	 *
-	 * @return array updated list of icons.
+	 * @return int[] The updated sizes.
 	 */
 	public static function site_icon_image_sizes( $sizes ) {
 		$sizes[] = 16;
 		$sizes[] = 32;
 		$sizes[] = 64;
 
-		return array_unique( $sizes );
+		return \array_unique( $sizes );
 	}
 
 	/**
-	 * Adds OSD Images.
+	 * Add the site icon to the document.
 	 */
 	public static function osd_xml() {
-		if ( function_exists( 'get_site_icon_url' ) && has_site_icon() ) {
-			?>
-	<Image height="16" width="16"><?php echo get_site_icon_url( 16 ); ?></Image>
-	<Image height="32" width="32"><?php echo get_site_icon_url( 32 ); ?></Image>
-	<Image height="64" width="64"><?php echo get_site_icon_url( 64 ); ?></Image>
-			<?php
+		if ( ! \has_site_icon() ) {
+			return;
+		}
+
+		$type = \get_post_mime_type( \get_option( 'site_icon' ) );
+
+		foreach ( array( 16, 32, 64 ) as $size ) {
+			\printf(
+				'	<Image height="%1$d" width="%1$d"%2$s>%3$s</Image>' . PHP_EOL,
+				(int) $size,
+				$type ? \sprintf( ' type="%s"', \esc_attr( $type ) ) : '',
+				\esc_xml( \get_site_icon_url( $size ) )
+			);
 		}
 	}
 
 	/**
-	 * Modifies the site's web app manifest.
+	 * Add the site as search provider to the web app manifest.
 	 *
-	 * @param array $manifest The associative web app manifest array.
-	 * @return array The filtered $manifest.
+	 * See https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/chrome_settings_overrides
+	 *
+	 * @param array $manifest The web app manifest.
+	 *
+	 * @return array The updated manifest.
 	 */
 	public static function web_app_manifest( $manifest ) {
 		if ( ! isset( $manifest['chrome_settings_overrides'] ) ) {
@@ -142,8 +140,8 @@ class Discovery {
 
 		$manifest['chrome_settings_overrides']['search_provider'] = array(
 			'name'        => \get_bloginfo( 'name' ),
-			'search_url'  => url_template( false ),
-			'keyword'     => \sanitize_title( get_bloginfo( 'name' ) ),
+			'search_url'  => get_url_template( 'html' ),
+			'keyword'     => \sanitize_title( \get_bloginfo( 'name' ) ),
 			'favicon_url' => \get_site_icon_url( 32 ),
 			'encoding'    => \get_bloginfo( 'charset' ),
 		);

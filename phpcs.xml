@@ -1,11 +1,29 @@
 <?xml version="1.0"?>
-<ruleset name="WordPress Theme Coding Standards">
-	<!-- See https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
-	<!-- See https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/blob/develop/WordPress-Core/ruleset.xml -->
+<ruleset name="Open Search Document">
+	<description>Coding standards for the Open Search Document plugin.</description>
 
-	<!-- Set a description for this ruleset. -->
-	<description>A custom set of code standard rules to check for WordPress themes.</description>
+	<file>.</file>
+	<exclude-pattern>.(git|github|vscode|idea|wordpress-org|data)</exclude-pattern>
+	<exclude-pattern>*\.(inc|css|js|svg)</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
 
-	<!-- Include the WordPress ruleset, with exclusions. -->
-	<rule ref="WordPress-Core" />
+	<arg value="ps"/>
+	<arg name="basepath" value="."/>
+	<arg name="colors"/>
+	<arg name="parallel" value="50"/>
+
+	<config name="testVersion" value="7.4-"/>
+	<config name="minimum_supported_wp_version" value="6.4"/>
+	<config name="text_domain" value="open-search-document,default"/>
+
+	<rule ref="PHPCompatibilityWP"/>
+	<rule ref="WordPress">
+		<exclude name="Universal.Operators.DisallowShortTernary" />
+	</rule>
+	<rule ref="VariableAnalysis"/>
+
+	<rule ref="WordPress.Files.FileName">
+		<exclude-pattern>/tests/*</exclude-pattern>
+	</rule>
 </ruleset>
